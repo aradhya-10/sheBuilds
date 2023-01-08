@@ -1,5 +1,6 @@
 import { useState } from "react";
 import RecordView from "./pages/RecordView";
+import { Form, Center, Navbar, Footer } from './components';
 
 function App() {
   const [allFiles, setAllFiles] = useState([]);
@@ -7,22 +8,26 @@ function App() {
     console.log(allFiles);
   };
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen">
       <div className="text-white">
-        <div className="mx-auto w-fit p-3 underline">RECORD SECTION</div>
-        <div className="mx-auto w-fit">
+		<Navbar />
+		<Center />
+		{/* <Form /> */}
+        <div className="mx-auto w-fit pt-28 underline">RECORD SECTION</div>
+        <div id="audio" className="mx-auto w-fit">
           Audio
-          <RecordView id="audio" audio={true} />
+          <RecordView audio={true} />
         </div>
-        {/* <div>
+        <div id="video" className="mx-auto w-fit">
           Video
           <RecordView video={true} />
         </div>
-        <div>
+        <div id="screen" className="mx-auto w-fit">
           Screen
           <RecordView screen={true} />
-        </div> */}
-      </div>{" "}
+        </div>
+		<Footer/>
+      </div>
     </div>
   );
 }
