@@ -1,53 +1,32 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useEffect } from "react";
 
-const AddPost = () => {
+const AddPost = ({setAllFiles, allFiles}) => {
   const [files, setFiles] = useState([]);
   const handleFile = (e) => {
-	console.log("files", files);
+    console.log("files", files);
     const fileList = e.target.files[0];
     console.log("file to be added", fileList);
-    setFiles([...files, fileList]);
+    setAllFiles([]);
   };
+  // useEffect(() => {
+  //   setAllFiles((each) => {
+  //     return [...each, ]
+  //   });
+  // }, [files]);
 
   const removeImage = (i) => {
-	console.log("files", files);
-	console.log(`Deleted ${i}`);
+    console.log("files", files);
+    console.log(`Deleted ${i}`);
     setFiles(files.filter((x) => x.name !== i));
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const form = new FormData();
-      files.forEach((file) => {
-        form.append("images", file);
-      });
-
-      const res = await axios.post(
-        "http://localhost:4000/api/posts/addPost",
-        form,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials: true,
-        }
-      );
-      console.log(res.data);
-      // navigate("/pay");
-      window.location.replace("https://buy.stripe.com/test_bIY16J3VGd4t1dScMM");
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
-    <div className="flex flex-col items-center py-10 relative min-h-screen text-white  ">
-      <h1>Add details for your post</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-wrap max-w-[600px] gap-8"
-      >
+    <div className="flex flex-col items-center py-10 relative text-white  ">
+      <form className="flex flex-wrap max-w-[600px] gap-8">
         <div className="w-full">
-          <p>Upload Images</p>
+          <p>Upload Any Files</p>
           <div className="flex justify-center w-full items-center px-3">
             <div className="rounded-lg shadow-xl bg-transparent w-full">
               <div className="m-4 w-full">
@@ -67,7 +46,7 @@ const AddPost = () => {
                         />
                       </svg>
                       <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                        Select a photo
+                        Select a file
                       </p>
                     </div>
                     <input
@@ -104,20 +83,6 @@ const AddPost = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="text-white">
-          <button
-            onClick={handleSubmit}
-            className="bg-pink-500 px-3 py-2 rounded-lg m-4"
-            type="submit"
-          >
-            Pay Now
-          </button>
-          <button
-            className="rounded-lg m-2 p-2 text-gray-100 border bg-gray-500 border-gray-500"
-          >
-            Save for later
-          </button>
         </div>
       </form>
     </div>
