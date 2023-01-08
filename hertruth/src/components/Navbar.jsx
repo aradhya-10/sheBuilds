@@ -17,10 +17,10 @@ const Navbar = () => {
             <img
               src={she}
               className="h-6 mr-3 sm:h-9"
-              alt="Flowbite Logo"
+              alt="herTruth Logo"
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
+              herTruth
             </span>
           </a>
           <div className="flex md:order-2">

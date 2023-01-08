@@ -1,32 +1,56 @@
 import { useState } from "react";
 import RecordView from "./pages/RecordView";
-import { Form, Center, Navbar, Footer } from './components';
+import { Center, Navbar, Footer, AddPost } from "./components";
+import axios from "axios";
 
 function App() {
   const [allFiles, setAllFiles] = useState([]);
-  const uploadFiles = async () => {
-    console.log(allFiles);
+  const [submit, setSubmit] = useState(false);
+  const handleSubmit = async () => {
+    setSubmit(true);
   };
   return (
     <div className="min-h-screen">
       <div className="text-white">
-		<Navbar />
-		<Center />
-		{/* <Form /> */}
+        <Navbar />
+        <Center />
+        {/* <Form /> */}
         <div className="mx-auto w-fit pt-28 underline">RECORD SECTION</div>
-        <div id="audio" className="mx-auto w-fit">
-          Audio
-          <RecordView audio={true} />
+        <div
+          id="audio"
+          className="mx-auto w-fit flex flex-col items-center p-2 m-4"
+        >
+          <div className="mx-auto">
+            <span>Audio</span>
+          </div>
+          <RecordView submit={submit} audio={true} />
         </div>
-        <div id="video" className="mx-auto w-fit">
+        <div
+          id="video"
+          className="mx-auto w-fit flex flex-col items-center p-2 m-4"
+        >
           Video
-          <RecordView video={true} />
+          <RecordView submit={submit} video={true} />
         </div>
-        <div id="screen" className="mx-auto w-fit">
+        <div
+          id="screen"
+          className="mx-auto w-fit flex flex-col items-center p-2 m-4"
+        >
           Screen
-          <RecordView screen={true} />
+          <RecordView submit={submit} screen={true} />
         </div>
-		<Footer/>
+        <div
+          id="addPost"
+          className="mx-auto w-fit flex flex-col items-center p-2 m-4"
+        >
+          <AddPost submit={submit} />
+        </div>
+        <div id="submit" className="flex justify-center p-2 m-4">
+          <button onClick={handleSubmit} className=" rounded p-2 bg-green-400 text-white">
+            Submit All
+          </button>
+        </div>
+        <Footer />
       </div>
     </div>
   );
