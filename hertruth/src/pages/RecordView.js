@@ -53,7 +53,7 @@ const RecordView = ({ audio, video, screen, submit }) => {
       setter();
   }, [submit, mediaBlobUrl]);
   return (
-    <div className="bg-black w-fit mx-auto p-4 text-white overflow-x-hidden">
+    <div className="bg-black rounded-md bg-opacity-20 w-fit mx-auto p-4 text-white overflow-x-hidden">
       <p className="">
         Status: <span className={"uppercase"}>{status}</span>
       </p>
