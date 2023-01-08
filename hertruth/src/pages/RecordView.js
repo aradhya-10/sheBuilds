@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
 import axios from "axios";
-import { getFilesFromPath } from "web3.storage";
+import { File } from "web3.storage";
 const RecordView = ({ audio, video, screen }) => {
   const {
     status,
@@ -20,42 +20,25 @@ const RecordView = ({ audio, video, screen }) => {
   };
   useEffect(() => {
     async function setter() {
-      // console.log(await getFilesFromPath(mediaBlobUrl));
-      // const response = await fetch(mediaBlobUrl);
-      // const blob = await response.blob();
-      // const file = new File([blob], Date.now());
-      // console.log(file);
-      // function readFile(input){
-      //   const fr = new FileReader();
-      //   fr.readAsDataURL(input);
-      //   fr.addEventListener('load', () => {
-      //     const res = fr.result;
-      //   })
-      // }
-      // readFile(file);
-      const formData = new FormData();
-
-      // formData.set("name", "Hello World");
-      formData.append("data", mediaBlobUrl);
-      console.log("URI",mediaBlobUrl)
-      const result = axios.post(`upload-files`, formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
+      const response = await fetch(mediaBlobUrl);
+      const blob = await response.blob();
+      const files = [];
+      const file = new File([blob], Date.now());
+      console.log("URI", mediaBlobUrl);
+      console.log('here');
+      const result = axios.post(`https://api.web3.storage/upload`, {
+        file: file
+      }, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEU5QTYzMUI0MjMzMDgxNDc3RDhiQTI2OEJDNjEwNWJEOTczOWJlRkMiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzMwMjkzNDczNzgsIm5hbWUiOiJzdHJBUEkifQ.XSvQF6p4Mib1ntWJxnBaR4Tj7xIpxV2eLfEnG42swu0`,
+        },
       });
-      // const reader = new FileReader();
-      // reader.onload= () =>{
-
-      // }
-      // const audiofile = new File([audioBlob], "audiofile.webm", {
-      //   type: "audio/webm",
-      // });
-
-      // console.log(audiofile);
+      console.log('here');
+      console.log(result);  
       setFiles((old) => {
         return [...old, mediaBlobUrl];
       });
-
-      console.log(result);
     }
     if (mediaBlobUrl && files.indexOf(mediaBlobUrl) === -1) {
       setter();
