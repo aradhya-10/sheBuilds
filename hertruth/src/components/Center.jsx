@@ -3,7 +3,7 @@ import React from "react";
 const Center = () => {
   const org = [];
   return (
-    <div className="fixed top-10 right-0 pr-1 ">
+    <div className="fixed top-10 right-0 pr-1 z-20">
       {/* <div className="container flex justify-center mt-40 mx-auto">
         <div className="h-fit w-fit p-8 bg-pink-500">Report Incident</div>
       </div> */}
@@ -21,18 +21,6 @@ const Center = () => {
 				Record Audio
 			</a>
 	  </div>
-      <div className="container flex">
-        <div className="conatiner">
-          {org.map((x) => {
-            return (
-              <>
-                <h3>{x[0]}</h3>
-                <a href={x[1]}>{x[1]}</a>
-              </>
-            );
-          })}
-        </div>
-      </div>
     </div>
   );
 };
