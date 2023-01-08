@@ -26,7 +26,7 @@ const Navbar = () => {
           <div className="flex md:order-2">
             <button
               type="button"
-              className="text-white bg-pink-300 hover:bg-pink-500 focus:ring-2 focus:outline-none focus:ring-pink-300 font-medium rounded-lg px-4 py-1 text-center mr-3 md:mr-0 dark:bg-pink-600 dark:hover:bg-pink-500 dark:focus:ring-pink-500"
+              className="text-white bg-pink-300 hover:bg-pink-500 focus:ring-2 focus:outline-none focus:ring-pink-300 font-medium rounded-lg p-4 py-1 text-center mr-6 md:mr-1 dark:bg-pink-600 dark:hover:bg-pink-500 dark:focus:ring-pink-500"
             >
               Report Incident
             </button>

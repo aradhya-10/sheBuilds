@@ -3,27 +3,23 @@ import React from "react";
 const Center = () => {
   const org = [];
   return (
-    <div bg-black>
+    <div className="fixed top-10 right-0 pr-1 ">
       {/* <div className="container flex justify-center mt-40 mx-auto">
         <div className="h-fit w-fit p-8 bg-pink-500">Report Incident</div>
       </div> */}
-	  <div className="container bg-black flex flex-wrap flex-col text-white">
-		<div className="container flex flex-row justify-center">
-			<div className="text-center container m-[1px] h-auto w-60 p-8 bg-pink-500">
-				Upload Images/Videos
-			</div>
-			<div className="text-center container m-[1px] h-auto w-60 p-8 bg-pink-500">
+	  <div className="container pt-24 pb-8 flex flex-wrap flex-col text-white ">
+			<a href="/" className="text-center container m-[2px] h-auto w-40 hover:bg-pink-600 hover:font-semibold py-4 px-2 rounded-sm bg-pink-500">
+				Upload File
+			</a>
+			<a href="#video" className="text-center container m-[2px] h-auto w-40 hover:bg-pink-600 hover:font-semibold rounded-sm py-4 px-2 bg-pink-500">
 				Record Video
-			</div>
-		</div>
-		<div className="container flex flex-row justify-center">	
-			<div className="text-center container m-[1px] h-auto w-60 p-8 bg-pink-500">
+			</a>
+			<a href="#screen" className="text-center container m-[2px] h-auto w-40 hover:bg-pink-600 hover:font-semibold rounded-sm py-4 px-2 bg-pink-500">
 				Record Screen
-			</div>
-			<div className="text-center container m-[1px] h-auto w-60 p-8 bg-pink-500">
+			</a>
+			<a href="#audio" className="text-center container m-[2px] h-auto w-40 hover:bg-pink-600 hover:font-semibold rounded-sm py-4 px-2 bg-pink-500">
 				Record Audio
-			</div>
-		</div>
+			</a>
 	  </div>
       <div className="container flex">
         <div className="conatiner">
