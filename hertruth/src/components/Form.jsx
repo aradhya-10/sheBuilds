@@ -2,56 +2,25 @@ import React, { useState } from "react";
 // const { Revise } = require("revise-sdk");
 // const revise = new Revise({ auth: process.env.REVISE_AUTHKEY });
 
-const Form = (imgsrc) => {
+const Form = () => {
   var ddetail = {
-    Name: "",
-    Brand: "",
     Date: "",
-    Metadata: "",
-    Duration: 0,
+    Detail: "",
+    Time: "",
   };
 
   const [details, setDetails] = useState(ddetail);
 
-  async function run(detail) {
-    // write your code here - this is where the next two snippets of code should be pasted
-    // const collection = await revise.addCollection({
-    //   name: detail.Brand,
-    //   uri: detail.Name,
-    // });
-    // const nft = await revise.addNFT(
-    //   {
-    //     image: imgsrc,
-    //     name: detail.Name,
-    //     tokenId: "1",
-    //     description: detail.Metadata,
-    //   },
-    //   [{ start: ""}, {duration: detail.Duration}],
-    //   collection.id
-    // );
-
-    // console.log(nft);
-  }
-
   function submitted(e) {
-    const name = document.getElementById("floating_event_name");
-    const brand = document.getElementById("floating_brand_name");
-    const date = document.getElementById("floating_date");
+	const date = document.getElementById("floating_date");
     const metadata = document.getElementById("floating_metadata");
-    const day = document.getElementById("floating_days");
-    const hour = document.getElementById("floating_hours");
-    const minute = document.getElementById("floating_minutes");
-    const duration = minute + (day * 24 + hour) * 60;
-    ddetail = {
-      Name: name.value,
-      Brand: brand.value,
+    const time = document.getElementById("floating_time");
+	ddetail = {
       Date: date.value,
-      Metadata: metadata.value,
-      Duration: duration,
+      Detail: metadata.value,
+      Time: time,
     };
     setDetails(ddetail);
-    //
-    console.log(details.Name);
   }
   return (
     <div className="flex m-8 px-12">
